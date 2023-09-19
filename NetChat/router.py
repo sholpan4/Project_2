@@ -5,7 +5,7 @@ from udp_receiver import UdpReceiver
 from udp_sender import UdpSender
 # from logger import Logger
 
-# log = Logger.Instance
+# log = Logger.instance
 
 class Router(QObject):
     def __init__(self):
@@ -18,7 +18,7 @@ class Router(QObject):
         self.gui.sendMessage.connect(lambda s: print(s))
         
     def start(self):
-        # log.d("Starting router")
+        # log.d("Logger works")
         self.data_storage.start()
         self.gui.start()
         self.udp_receiver.start()

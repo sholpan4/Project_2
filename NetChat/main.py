@@ -7,7 +7,6 @@ from udp_sender import *
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    # log = Logger(Logger.DEBUG)
     
     route = Router()
     route.start()

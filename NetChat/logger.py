@@ -4,7 +4,7 @@ class Logger:
     def __new__(cls, log_level, stdout=True, file=None):
         if not hasattr(cls, 'instance'):
             cls.instance = super(Logger, cls).__new__(cls)
-            cls.instance.__init(log_level, stdout, file)
+            cls.instance.__init__(log_level, stdout, file)
         return cls.instance
     
     def __init__(self, log_level, stdout=True, file=None):

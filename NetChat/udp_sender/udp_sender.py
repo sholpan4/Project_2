@@ -14,8 +14,7 @@ class UdpSender(QThread):
         self.address = address
         self.port = port
 
-    def start(self):
-        self.run()
+   
 
     def run(self, is_running, message):
         is_running = True #здесь устанавливаем флаг

@@ -1,5 +1,6 @@
 import socket
-from PyQt6.QtCore import QThread
+from PyQt6.QtCore import QThread, pyqtSignal
+
 
 # этот класс черновик-пример ))
 class UdpSender(QThread):

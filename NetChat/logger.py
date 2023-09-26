@@ -1,4 +1,16 @@
 class Logger:
+    ERROR = 0
+    WARNING = 1
+    INFO = 2
+    DEBUG = 3
+    TRACE = 4
+    names = ["[E]", "[W]", "[I]", "[D]", "[T]"]
+    COLOR = {
+        ERROR: "\033[31m",
+        WARNING: "\033[33m",
+        INFO: 
+    
+    ENDCOLOR = 
     Instance = None
     
     def __new__(cls, log_level, stdout=True, file=None):

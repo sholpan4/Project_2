@@ -1,31 +1,24 @@
 import socket
 from PyQt6.QtCore import QThread, pyqtSignal
+from logger import log
+import threading #для установки lock 
 
 
-# этот класс черновик-пример ))
+# этот класс не делала)) 
 class UdpSender(QThread):
-    address = 'localhost'
-    port = 0
-    is_running = False
-
-    my_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-
-    def __init__(self, address, port):
-        
-        self.address = address
-        self.port = port
-
+    def __init__(self):
+        super().__init__()
+        self.socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        self.address = 'localhost'
+        self.port = 0
+        self.runnning = False #?
    
+    def run(self):
+        log.d('DEBUG')
+        self.running = True
 
-    def run(self, is_running, message):
-        is_running = True #здесь устанавливаем флаг
-
-        while is_running:
+        while self.running:
             message = input('')
-            my_socket.sendto(message.encode(), server_address)
-            # if message =='exit':
-            #     is_running = False  эту часть нужно как то в стор передать
+            self.socket.sendto(message.encode(), server_address)
 
-    def stop(self):
-        super().__stop()
-        # здесь убираем флаг, останавливаем только цикл ран с флажком
+

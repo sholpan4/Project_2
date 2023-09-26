@@ -8,9 +8,11 @@ class Logger:
     COLOR = {
         ERROR: "\033[31m",
         WARNING: "\033[33m",
-        INFO: 
+        INFO: "\033[32m",
+        DEBUG: "\033[37m",
+        TRACE: "\033[35m"
     
-    ENDCOLOR = 
+    ENDCOLOR = "\033[0m"
     Instance = None
     
     def __new__(cls, log_level, stdout=True, file=None):

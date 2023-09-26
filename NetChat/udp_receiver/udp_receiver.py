@@ -10,8 +10,7 @@ class UdpReceiver(QThread):
         my_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         my_socket.bind(my_address)
 
-    def start(self):
-        self.run()
+   
 
     def run(self, my_socket):
         is_running = True

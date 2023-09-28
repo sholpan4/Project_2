@@ -6,7 +6,7 @@ from logger import log
 class UdpReceiver(QThread):
     
     def __init__(self):
-        super().__init__
+        super().__init__()
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.address = ('localhost', 9900)
         self.running = False  

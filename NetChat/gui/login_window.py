@@ -1,7 +1,7 @@
-from logger import log
 from PyQt6.QtWidgets import *
-from PyQt6 import uic
 from PyQt6.QtCore import pyqtSignal
+from PyQt6 import uic
+from logger import log
 
 
 class LoginWindow(QDialog):

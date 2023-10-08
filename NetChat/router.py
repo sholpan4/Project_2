@@ -1,6 +1,6 @@
 from PyQt6.QtCore import QObject
 from logger import log
-from NetChat.gui.gui import Gui
+from gui import Gui
 from data_storage import DataStorage
 from udp_receiver import UdpReceiver
 from udp_sender import UdpSender

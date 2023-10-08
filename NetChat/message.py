@@ -1,5 +1,6 @@
 import json
 
+
 class Message():
     time = 0
     text = ''

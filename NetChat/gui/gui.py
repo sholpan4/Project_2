@@ -27,7 +27,7 @@ class Gui(QObject):
         # self.running = True
 
     def set_window(self, window_name, username=None):
-        if window_name = type(self.window).__name__:
+        if window_name == type(self.window).__name__:
             return
         self.running = True
         if self.window is not None:
@@ -51,4 +51,3 @@ class Gui(QObject):
 
     def set_chat(self, name_chat):
         pass
-  

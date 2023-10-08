@@ -22,4 +22,3 @@ class LoginWindow(QDialog):
         if user_name:
             self.loginUser.emit(user_name)
             log.i(f"Пользователь '{user_name}' авторизован")
-

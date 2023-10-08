@@ -29,13 +29,11 @@ class Controller(QObject):
 
         {'from': "MAIN_WIN",  'to': "CHANGING_CHAT", 'by': "GUI_CHAT_CHANGE"},
         {'from': "CHANGING_CHAT",  'to': "MAIN_WIN",  'by': "IMMEDIATELY"}
-
     )
 
     def __init__(self):
         super().__init__()
         self._process_state("INIT")
-
 
     def _process_state(self, *args):
         match self._state:
@@ -77,8 +75,7 @@ class Controller(QObject):
                 self.setChat.emit(chat_name)
 
             case _:
-                log.w("Unknown state!")
-        
+                log.w("Unknown state!")       
 
     def _process_signal(self, signal_name, *args):
         allowed_transitions = tuple(filter(lambda x: x["from"] == self._state and x["by"] == signal_name, self._transitions))
@@ -96,7 +93,6 @@ class Controller(QObject):
         self._state = current_transition["to"]
         log.d(f'Переключились из {current_transition["from"]} в {self._state}, по сигналу IMMEDIATELY')
         self._process_state()
-
 
     def database_ready(self):
         self._process_signal('DB_READY')

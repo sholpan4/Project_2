@@ -20,7 +20,7 @@ class UdpReceiver(QThread):
         self.running = True
 
         while self.running:
-            data, addr = self.socket.recvform(4096)
+            data, addr = self.socket.recvfrom(4096)
             received_string = data.decode(encoding= "utf-8")
             log.d(f'received message from {addr}: {received_string}')
             msg = Message(received_string)

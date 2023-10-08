@@ -1,6 +1,7 @@
 from PyQt6.QtCore import QThread, pyqtSignal
 from logger import log
 
+
 class DataStorage(QThread):
     username = None
     password = None # ?

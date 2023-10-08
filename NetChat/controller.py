@@ -24,7 +24,7 @@ class Controller(QObject):
         {'from': "CHECK_MSG", 'to': "MAIN_WIN",  'by': "IMMEDIATELY"},
 
         {'from': "MAIN_WIN",  'to': "SEND_MSG",  'by': "GUI_SEND"},
-        {'from': "GUI_SEND",  'to': "MAIN_WIN",  'by': "IMMEDIATELY"},
+        {'from': "SEND_MSG",  'to': "MAIN_WIN",  'by': "IMMEDIATELY"},
 
         {'from': "MAIN_WIN",  'to': "CHANGING_CHAT", 'by': "GUI_CHAT_CHANGE"},
         {'from': "CHANGING_CHAT",  'to': "MAIN_WIN",  'by': "IMMEDIATELY"}

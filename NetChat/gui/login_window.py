@@ -1,7 +1,7 @@
-from logger import log
 from PyQt6.QtWidgets import *
 from PyQt6 import QtCore, uic
 from PyQt6.QtCore import pyqtSignal
+from logger import log
 
 
 class LoginWindow(QDialog):
@@ -22,4 +22,3 @@ class LoginWindow(QDialog):
         if user_name:
             self.loginUser.emit(user_name)
             log.i(f"Пользователь '{user_name}' авторизован")
-

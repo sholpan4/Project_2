@@ -1,6 +1,6 @@
 from PyQt6.QtWidgets import *
+from PyQt6 import QtCore, uic
 from PyQt6.QtCore import pyqtSignal
-from PyQt6 import uic
 from logger import log
 
 

@@ -19,6 +19,6 @@ class UdpSender(QThread):
 
         while self.running:
             message = input('')
-            self.socket.sendto(message.encode(), server_address)
+            self.socket.sendto(message.encode(), self.address)
 
 

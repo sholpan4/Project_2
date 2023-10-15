@@ -41,7 +41,7 @@ class Gui(QObject):
                 self.window = LoginWindow()
                 self.window.loginUser.connect(self.loginUser)
             case _:
-                log.e('ERROR',window_name)
+                log.e('ERROR', window_name)
         if self.running:
             self.window.show() #or self.show() or run()?
             

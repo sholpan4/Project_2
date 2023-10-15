@@ -5,6 +5,7 @@ from .main_window import MainWindow
 from .login_window import LoginWindow
 from message import Message
 
+
 class Gui(QObject):
     sendMessage = pyqtSignal(str)
     loginUser = pyqtSignal(str)
@@ -42,7 +43,7 @@ class Gui(QObject):
             case _:
                 log.e('ERROR',window_name)
         if self.running:
-            self.window.show() #or self.run()?
+            self.window.show() #or self.show() or run()?
             
     def add_contact(self, name_contact):
         pass

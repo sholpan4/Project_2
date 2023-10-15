@@ -4,6 +4,7 @@ from PyQt6 import uic
 from PyQt6.QtCore import pyqtSignal
 from message import Message
 
+
 class MainWindow(QMainWindow):
     sendMessage = pyqtSignal(str)
 

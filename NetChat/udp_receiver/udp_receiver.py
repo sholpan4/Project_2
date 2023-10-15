@@ -3,6 +3,7 @@ from PyQt6.QtCore import QThread, pyqtSignal
 from logger import log
 from message import Message
 
+
 class UdpReceiver(QThread):
     message = pyqtSignal(Message)
     hello = pyqtSignal(str)

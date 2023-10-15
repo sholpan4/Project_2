@@ -1,16 +1,17 @@
-from logger import log
+import typing
 from PyQt6.QtWidgets import *
-from PyQt6 import uic
+from logger import log
+from PyQt6 import QtCore, uic
 from PyQt6.QtCore import pyqtSignal
 
 
 class LoginWindow(QDialog):
-    loginUser = pyqtSignal(str, str)
+    loginUser = pyqtSignal(str)
 
     def __init__(self):
         super().__init__()
         uic.loadUi("gui/login_window.ui", self)
-        
+
     def show(self):
         super().show()
         button = self.findChild(QPushButton, "Login")
@@ -19,9 +20,6 @@ class LoginWindow(QDialog):
     def login_user(self):
         name_input = self.findChild(QLineEdit, "Nickname")
         user_name = name_input.text()
-        password_input = self.findChild(QLineEdit, 'Password')
-        user_password = password_input.text()
-        if user_name and user_password:
-            self.loginUser.emit(user_name, user_password)
-            log.i(f"Пользователь '{user_name}' авторизован")
-
+        if user_name:
+            self.loginUser.emit(user_name)
+            log.i(f"User '{user_name} authorized")

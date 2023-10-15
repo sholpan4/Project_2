@@ -39,5 +39,3 @@ class Message():
 if '__main__' == __name__:
     msg = Message('{"text":"sender_name","time":50}')
     print(msg.toJson())
-
-

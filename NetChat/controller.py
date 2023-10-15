@@ -10,14 +10,18 @@ class Controller(QObject):
     sendMessage = pyqtSignal(Message)
     setChat = pyqtSignal(str)
     sendHello = pyqtSignal(Message)
-    _username = 'Jonh Doe'
+
+    _username = 'John Doe'
     _state = "INIT"
     _transitions = (
         {'from': "INIT",     'to': "LOGIN",       'by': "DB_READY"},
         {'from': "LOGIN",    'to': "AUTH",        'by': "GUI_LOGIN"},
-        {'from': "AUTH",     'to': "MAIN_WIN",    'by': "DB_AUTH_OK"},
+
         {'from': "AUTH",     'to': "LOGIN",       'by': "DB_AUTH_BAD"},
-        {'from': "HELLO",    'to': "MAIN_WIN",    'by': "IMMEDIATELY"},
+
+        {'from': "AUTH",       'to': "HELLO",  'by': "DB_AUTH_OK"},
+        {'from': "HELLO", 'to': "MAIN_WIN",  'by': "IMMEDIATELY"},
+        
 
         {'from': "MAIN_WIN", 'to': "ADD_FRIEND",  'by': "UR_HELLO"},
         {'from': "ADD_FRIEND", 'to': "MAIN_WIN",  'by': "IMMEDIATELY"},
@@ -37,7 +41,6 @@ class Controller(QObject):
         super().__init__()
         self._process_state("INIT")
 
-
     def _process_state(self, *args):
         match self._state:
             case "INIT":
@@ -52,28 +55,30 @@ class Controller(QObject):
             case "HELLO":
                 if args:
                     self.username = args[0]
-                hello_msg = Message('{"text": "%s"}')
-                hello_msg.senderName = self._username
+                hello_msg = Message('{"text": "Hello"}')
+                self._username = hello_msg.senderName
                 hello_msg.type = "service_request"
                 self.sendHello.emit(hello_msg)
 
-            case "MAIN_WIN":
-
+            case "MAIN_WIN": 
                 self.switchWindow.emit("MainWindow", self._username)
             
             case "ADD_FRIEND":
                 message = args[0]
-                log.d('Добавляем друга', message.senderName)
-                if message.type == 'service_request':
-                    self.addContact.emit(message)
+                log.d("Добавляем нового друга:", message.senderName)
+                self.addContact.emit(message.senderName)
+                if message.type == "service_request":
                     response = Message('{"text": "hello"}')
-                    response.type = 'service_response'
-                    response.receiverName = message
+                    response.type = "service_response"
                     response.senderName = self._username
+                    response.receiverName = message.senderName
+                    response.receiverIP = message.senderIP
                     self.sendMessage.emit(response)
 
             case "CHECK_MSG":
                 msg : Message = args[0]
+                # message_text = args[0]
+                # message_type = args[1]
                 if msg.type == "public": 
                     # Добавить проверку текущей вкладки (general и т.д)
                     self.showMessage.emit(msg)
@@ -83,7 +88,7 @@ class Controller(QObject):
                 msg = Message('{"text": "%s"}' % message_text)
                 msg.senderName = self._username
                 msg.type = "public"
-                self.sendMessage.emit(msg)
+                self.sendMessage.emit(msg) 
 
             case "CHANGING_CHAT": 
                 chat_name = args[0]
@@ -101,10 +106,10 @@ class Controller(QObject):
         self._state = current_transition["to"]
         log.d(f'Переключились из {current_transition["from"]} в {self._state}, по сигналу {signal_name}')
         self._process_state(*args)
-        log.i('Дошел до этого кода 1')
+        log.i('reached code 1')
 
         allowed_transitions = tuple(filter(lambda x: x["from"] == self._state and x["by"] == "IMMEDIATELY", self._transitions))
-        log.d('Дошел до этого кода 2')
+        log.d('reached code 2')
         log.d(allowed_transitions)
         if len(allowed_transitions) == 0:
             return
@@ -113,10 +118,11 @@ class Controller(QObject):
         log.d(f'Переключились из {current_transition["from"]} в {self._state}, по сигналу IMMEDIATELY')
         self._process_state()
 
+
     def database_ready(self):
         self._process_signal('DB_READY')
 
-    def login(self, username, password):
+    def login(self, username):
         if username:
             self._process_signal('GUI_LOGIN', username)
     
@@ -126,8 +132,8 @@ class Controller(QObject):
     def database_auth_bad(self, error_text):
         self._process_signal('DB_AUTH_BAD')
 
-    def recived_hello(self, name):
-        self._process_signal('UR_HELLO', name)
+    def recived_hello(self, msg):
+        self._process_signal('UR_HELLO', msg)
     
     def recived_message(self, msg):
         self._process_signal('UR_MESSAGE', msg)
@@ -137,4 +143,3 @@ class Controller(QObject):
         
     def change_chat(self, chat_name):
         self._process_signal('GUI_CHAT_CHANGE', chat_name)
-

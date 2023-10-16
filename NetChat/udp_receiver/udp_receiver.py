@@ -11,9 +11,11 @@ class UdpReceiver(QThread):
     def __init__(self):
         super().__init__()
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        self.address = ('localhost', 9900)
-        self.running = False  
-
+        hostname = socket.gethostname()
+        ip_adr = socket.gethostbyname(hostname)
+        self.address = (ip_adr, 9900)
+        self.running = False
+    
     def run(self):
         log.i("Receiver is running")
         self.socket.bind(self.address)
@@ -21,11 +23,15 @@ class UdpReceiver(QThread):
 
         while self.running:
             data, addr = self.socket.recvfrom(4096)
-            received_string = data.decode(encoding= "utf-8")
+            received_string = data.decode(encoding="utf-8")
             log.d(f'received message from {addr}: {received_string}')
             msg = Message(received_string)
-            self.message.emit(msg)
-            
+            msg.senderIp = addr[0]
+            if msg.type == 'service_request' and msg.text.lower() == 'hello':
+                self.hello.emit(msg)
+            else:
+                self.message.emit(msg) 
+
     def stop(self):
         self.running = False
         super().stop()

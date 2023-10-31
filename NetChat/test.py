@@ -1,12 +1,18 @@
 import hashlib
 
-username = 'Vitaly'
-password = '1235'
+username = "Vitaly"
+passw = "1235"
+salt = "sflu;krg76t4mhuiut2 iojlkjwefhk;geh29"
 
-hash = hashlib.sha1() #hashlib.md5(password.encode('UTF-8'))
+# hash = hashlib.md5(passw.encode('utf-8'))
 
-hash.update(username.encode())
-hash.update(password.encode())
+# hash = hashlib.md5()
+# hash = hashlib.sha1() #старый
+hash = hashlib.sha512()
+# hash.update(username.encode('utf-8'))
+hash.update(passw.encode('utf-8'))
+hash.update(salt.encode('utf-8'))
 print(hash)
+
 hash_string = hash.hexdigest()
 print(hash_string)

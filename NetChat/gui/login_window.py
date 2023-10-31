@@ -1,5 +1,5 @@
-from PyQt6.QtWidgets import *
 from logger import log
+from PyQt6.QtWidgets import *
 from PyQt6 import uic
 from PyQt6.QtCore import pyqtSignal
 
@@ -23,4 +23,4 @@ class LoginWindow(QDialog):
         user_password = login_input.text()
         if user_name and user_password:
             self.loginUser.emit(user_name, user_password)
-            log.i(f"User '{user_name} authorized")
+            log.i(f"Пользователь '{user_name}' авторизован")

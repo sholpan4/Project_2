@@ -13,21 +13,20 @@ class Logger:
         TRACE: "\033[35m"
     }
     ENDCOLOR = "\033[0m"
-
     # Instance = None
-
+    
     def __new__(cls, log_level, stdout=True, file=None):
         if not hasattr(cls, 'instance'):
             cls.instance = super(Logger, cls).__new__(cls)
             cls.instance.__init__(log_level, stdout, file)
         return cls.instance
-
+    
     def __init__(self, log_level, stdout=True, file=None):
         self.log_level = log_level
         self.stdout = stdout
         self.file = file
         # Logger.Instance = self
-
+        
     def log(self, log_level, *args, **kwargs):
         if log_level <= self.log_level:
             message = ' '.join(map(str, args))
@@ -39,25 +38,24 @@ class Logger:
             if self.file:
                 with open(self.file, 'a') as f:
                     f.write(formatted_message + '\n')
-
+                    
     def set_log_levels(self, log_level):
         if log_level in range(len(Logger.names)):
             self.log_level = log_level
-
+            
     def e(self, *args, **kwargs):
         self.log(self.ERROR, *args, **kwargs)
-
+        
     def i(self, *args, **kwargs):
         self.log(self.INFO, *args, **kwargs)
-
+        
     def w(self, *args, **kwargs):
         self.log(self.WARNING, *args, **kwargs)
-
+        
     def d(self, *args, **kwargs):
         self.log(self.DEBUG, *args, **kwargs)
-
+        
     def t(self, *args, **kwargs):
         self.log(self.TRACE, *args, **kwargs)
-
 
 log = Logger(Logger.DEBUG)

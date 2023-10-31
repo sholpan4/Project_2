@@ -8,13 +8,13 @@ class DataStorage(QThread):
     ready = pyqtSignal()
     authOk = pyqtSignal(str)
     authBad = pyqtSignal(str)
-    def_user = "Ramazan"
-    def_password = "1234"
+    def_user = "Dauren"
+    def_password = "123"
 
     def run(self):
         log.i("Data storage started")
         self.ready.emit()
-
+       
     def auth(self, username, password):
         with open("data_storage/user.db", "r", encoding="UTF-8") as user_file:
             user_data = user_file.read().split()

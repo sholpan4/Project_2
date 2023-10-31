@@ -7,12 +7,15 @@ from .login_window import LoginWindow
 from message import Message
 
 
-class Gui(QObject):
+class GUI(QObject):
     sendMessage = pyqtSignal(str)
     loginUser = pyqtSignal(str, str)
     window: QWidget = None
     show_message = pyqtSignal(Message)
     changeChat = pyqtSignal(str)
+    add_contact = pyqtSignal(str)
+
+
 
     def init(self):
         super().init()
@@ -35,6 +38,7 @@ class Gui(QObject):
             case 'MainWindow':
                 self.window = MainWindow(username)
                 self.show_message.connect(self.window.show_message)
+                self.add_contact.connect(self.window.add_contact)
                 self.window.sendMessage.connect(self.sendMessage)
             case 'LoginWindow':
                 self.window = LoginWindow()
@@ -44,11 +48,6 @@ class Gui(QObject):
         if self.running:
             self.window.show()
 
-    def add_contact(self, name_contact):
-        pass
-
-    def delete_contact(self, name_contact):
-        pass
 
     def set_chat(self, name_chat):
         pass

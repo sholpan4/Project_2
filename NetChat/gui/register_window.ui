@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>501</width>
-    <height>370</height>
+    <height>597</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,12 +17,12 @@
    <string notr="true">background-color: rgb(214, 214, 214); color: rgb(121, 121, 121);
     </string>
   </property>
-  <widget class="QPushButton" name="Login">
+  <widget class="QPushButton" name="Register">
    <property name="geometry">
     <rect>
-     <x>170</x>
-     <y>320</y>
-     <width>141</width>
+     <x>160</x>
+     <y>530</y>
+     <width>161</width>
      <height>31</height>
     </rect>
    </property>
@@ -35,10 +35,10 @@
     <string notr="true">background-color: rgb(0, 150, 255); color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
-    <string>Войти</string>
+    <string>Создать аккаунт</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="Password">
+  <widget class="QLineEdit" name="Nickname">
    <property name="geometry">
     <rect>
      <x>80</x>
@@ -71,10 +71,10 @@
     </font>
    </property>
    <property name="text">
-    <string>Введите пароль:</string>
+    <string>Введите логин:</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="Nickname">
+  <widget class="QLineEdit" name="Email">
    <property name="geometry">
     <rect>
      <x>80</x>
@@ -107,7 +107,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Введите логин:</string>
+    <string>Введите адрес электронной почты:</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_3">
@@ -126,15 +126,15 @@
     </font>
    </property>
    <property name="text">
-    <string>Авторизация</string>
+    <string>Регистрация</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>130</x>
-     <y>250</y>
-     <width>101</width>
+     <x>120</x>
+     <y>460</y>
+     <width>131</width>
      <height>51</height>
     </rect>
    </property>
@@ -144,15 +144,15 @@
     </font>
    </property>
    <property name="text">
-    <string>Нет аккаунта?</string>
+    <string>Уже есть аккаунт?</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="Register">
+  <widget class="QPushButton" name="Auth">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>250</y>
-     <width>141</width>
+     <x>250</x>
+     <y>460</y>
+     <width>131</width>
      <height>51</height>
     </rect>
    </property>
@@ -172,7 +172,115 @@
 }</string>
    </property>
    <property name="text">
-    <string>Зарегистрируйтесь</string>
+    <string>Авторизуйтесь</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="Confirm_pass">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>430</y>
+     <width>339</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255); color: rgb(4, 51, 255);</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>390</y>
+     <width>339</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>13</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Потвердите пароль:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>260</y>
+     <width>411</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>13</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Введите пароль:</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="Password">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>310</y>
+     <width>339</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255); color: rgb(4, 51, 255);</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_7">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>340</y>
+     <width>341</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Пароль должен состоять из не менее чем 8 символов,</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_8">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>370</y>
+     <width>301</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>включая специальные символы и цифры.</string>
    </property>
   </widget>
  </widget>

@@ -9,8 +9,8 @@ class Controller(QObject):
     addContact = pyqtSignal(str)
     showMessage = pyqtSignal(Message)
     sendMessage = pyqtSignal(Message)
-    setChat = pyqtSignal(str)
     sendHello = pyqtSignal(Message)
+    
 
     
     _state = "INIT"
@@ -98,10 +98,6 @@ class Controller(QObject):
                 message.type = 'public'
                 self.sendMessage.emit(message)
             
-            case "CHANGING_CHAT": 
-                chat_name = args[0]
-                self.setChat.emit(chat_name)
-
             case _:
                 log.w("Unknown State!")
             
@@ -153,5 +149,3 @@ class Controller(QObject):
     def send_message(self, message_text):
         self._process_signal("GUI_SEND", message_text)
 
-    def change_chat(self, chat_name):
-        self._process_signal("GUI_CHAT_CHANGE", chat_name)

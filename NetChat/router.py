@@ -22,14 +22,12 @@ class Router(QObject):
         self.GUI.showRegisterWindow.connect(self.controller.registration)
         self.GUI.showLoginWindow.connect(self.controller.authorization)
         self.GUI.sendMessage.connect(self.controller.send_message)
-        self.GUI.changeChat.connect(self.controller.change_chat)
 
         # Сигналы Controller
         self.controller.switchWindow.connect(self.GUI.set_window)
         self.controller.addContact.connect(self.GUI.add_contact)
         self.controller.showMessage.connect(self.GUI.show_message)
         self.controller.sendMessage.connect(self.udp_sender.send)
-        self.controller.setChat.connect(self.GUI.set_chat)
         self.controller.sendHello.connect(self.udp_sender.send)
 
         # Сигналы UDP_Receiver

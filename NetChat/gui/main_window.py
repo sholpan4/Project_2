@@ -8,6 +8,7 @@ from PyQt6.QtGui import QTextCursor
 class MainWindow(QMainWindow):
     sendMessage = pyqtSignal(str, str)
 
+
     def __init__(self, username):
         super().__init__()
         uic.loadUi("gui\main_window.ui", self)
@@ -27,7 +28,8 @@ class MainWindow(QMainWindow):
         self.textedit = self.findChild(QTextEdit, "MessageToSend")
         self.textedit.keyPressEvent = self.my_keyPressEvent
         self.menu.setLayout(self.grid)
-        self.button_e.setMenu(self.menu)
+  
+ 
         
 
     def send_message(self):
@@ -122,3 +124,4 @@ class MainWindow(QMainWindow):
         new_contact = QLabel(text=name_contact)
         contactList.addWidget(new_contact)
         self.contact_list.append(new_contact)
+

@@ -53,6 +53,7 @@ class GUI(QObject):
                 self.window = RegisterWindow()
                 self.window.registerUser.connect(self.registerUser)
                 self.window.loginWindow.connect(self.showLoginWindow)
+
             case _:
                 log.e('Неизвестное имя окна:', window_name)
         if self.running:

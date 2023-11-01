@@ -10,7 +10,8 @@ class Message():
     receiverName = ''
     receiverIP = ''
 
-    def __init__(self, jsonstring):  # '{"time": "03-10-2023", ....}'
+    def __init__(self, jsonstring : str):  
+        jsonstring = jsonstring.replace('\n', '%enter%')
         data = json.loads(jsonstring)
         self.time = data.get('time', 0)
         if "senderIP" in data:
@@ -18,7 +19,7 @@ class Message():
         if "senderName" in data:
             self.senderName = data['senderName']
         if "text" in data:
-            self.text = data['text']
+            self.text = data['text'].replace('%enter%', '\n')
         if "receiverIP" in data:
             self.receiverIP = data['receiverIP']
         if "receiverName" in data:

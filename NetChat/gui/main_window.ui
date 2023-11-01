@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1222</width>
-    <height>762</height>
+    <height>806</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,7 +20,7 @@
       <x>10</x>
       <y>10</y>
       <width>291</width>
-      <height>701</height>
+      <height>751</height>
      </rect>
     </property>
     <property name="autoFillBackground">
@@ -41,7 +41,7 @@
        <x>9</x>
        <y>9</y>
        <width>271</width>
-       <height>681</height>
+       <height>731</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="ContactList"/>
@@ -81,8 +81,8 @@
      <rect>
       <x>320</x>
       <y>630</y>
-      <width>891</width>
-      <height>80</height>
+      <width>901</width>
+      <height>141</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -98,9 +98,9 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>10</y>
+       <y>0</y>
        <width>781</width>
-       <height>61</height>
+       <height>131</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -111,7 +111,23 @@
      <property name="geometry">
       <rect>
        <x>800</x>
-       <y>10</y>
+       <y>70</y>
+       <width>81</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 1px solid black; </string>
+     </property>
+     <property name="text">
+      <string>Отправить</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="emoji">
+     <property name="geometry">
+      <rect>
+       <x>800</x>
+       <y>2</y>
        <width>81</width>
        <height>61</height>
       </rect>

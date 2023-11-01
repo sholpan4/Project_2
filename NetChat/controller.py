@@ -12,8 +12,9 @@ class Controller(QObject):
     setChat = pyqtSignal(str)
     sendHello = pyqtSignal(Message)
 
-    _username = "Ramazan"
-    _state = "INIT" 
+    
+    _state = "INIT"
+    _username = "Ramazan" 
     _transitions = (
         {"from": "INIT",           "to": "LOGIN",          "by": "DB_READY"},
         {"from": "LOGIN",          "to": "AUTH",           "by": "GUI_LOGIN"},

@@ -12,9 +12,9 @@ class Controller(QObject):
     sendHello = pyqtSignal(Message)
     
 
-    
+     
     _state = "INIT"
-    _username = "Ramazan" 
+    _username = "" 
     _transitions = (
         {"from": "INIT",           "to": "LOGIN",          "by": "DB_READY"},
         {"from": "LOGIN",          "to": "AUTH",           "by": "GUI_LOGIN"},
@@ -46,6 +46,7 @@ class Controller(QObject):
         super().__init__()
         self._process_state("INIT")
 
+
     def _process_state(self, *args):
         log.d("Текущее состояние:", self._state)
         match self._state: 
@@ -61,7 +62,7 @@ class Controller(QObject):
             case "AUTH":
                 pass
             
-            case "UR_HELLO": 
+            case "HELLO": 
                 if args:
                     self._username = args[0]
                 hello_message = Message('{"text": "hello"}')
@@ -74,7 +75,7 @@ class Controller(QObject):
 
             case "ADD_FRIEND":
                 message = args[0]
-                log.d(f"Text - {message.text}, SenderIP - {message.senderIP}, SenderName - {message.senderName}")
+                log.d(f"Text - {message.text}, SenderIP - {message.senderIP}, senderName - {message.senderName}")
                 log.d("Добавлен новый друг:", message.senderName)
                 self.addContact.emit(message.senderName)
                 if message.type == "service_request":

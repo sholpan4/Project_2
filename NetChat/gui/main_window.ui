@@ -136,7 +136,7 @@
       <string notr="true">border: 1px solid black; </string>
      </property>
      <property name="text">
-      <string>Отправить</string>
+      <string>Эмодзи</string>
      </property>
     </widget>
    </widget>

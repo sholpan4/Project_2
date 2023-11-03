@@ -24,18 +24,14 @@ class MainWindow(QMainWindow):
         button.clicked.connect(self.send_message)
         self.add_contact("General")
         self.button_e = self.findChild(QPushButton, "emoji")
+        self.button_e.setMenu(self.menu)
         self.open_menu()
         self.textedit = self.findChild(QTextEdit, "MessageToSend")
         self.textedit.keyPressEvent = self.my_keyPressEvent
         self.menu.setLayout(self.grid)
   
  
-        
-
-    def send_message(self):
-        self.message = self.textedit.toPlainText()
-        self.sendMessage.emit(self.message, "public")
-        self.textedit.clear()
+    
 
 
     def process_key_event(self, event):

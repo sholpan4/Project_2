@@ -10,7 +10,7 @@ class Controller(QObject):
     showMessage = pyqtSignal(Message)
     sendMessage = pyqtSignal(Message)
     sendHello = pyqtSignal(Message)
-    
+     
 
      
     _state = "INIT"
